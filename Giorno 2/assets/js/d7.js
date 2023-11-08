@@ -129,7 +129,9 @@ generateTable();
         Crea una funzione che aggiunga una riga alla tabella precedentemente creata e fornisca i dati necessari come parametri
      */
 
-const addRow = function () {};
+const addRow = function () {
+
+};
 
 /* ESERCIZIO 14
        Crea una funzione che nasconda le immagini della tabella quando eseguita
@@ -141,8 +143,16 @@ const hideAllImages = function () {};
        Crea una funzione che cambi il colore del h2 con id "changeMyColor" con un colore random ad ogni click ricevuto
      */
 
-const changeColorWithRandom = function () {};
+const changeColorWithRandom = function () {
+    const nuovoColore = document.getElementById('changeMyColor');
+    
+    nuovoColore.onclick = function(){
+        const coloreCasuale =randomColor = Math.floor(Math.random()*16777215).toString(16);
+        nuovoColore.innerText += coloreCasuale.innerText;
 
+    }
+};
+changeColorWithRandom(); 
 /* EXTRA ESERCIZIO 16
        Crea una funzione che elimini le vocali da ogni elemento testuale della pagina (puoi aiutarti con i nuovi metodi degli array di ES6)
      */
