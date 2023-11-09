@@ -180,14 +180,30 @@ generateTable();
      */
 
 const addRow = function () {
-
+    const contenitore = document.getElementById('tableArea');
+const tabella = document.querySelector('table');
+const nuovaRiga = document.createElement('tr');
+    const cellaImmagine =document.createElement('td');
+    cellaImmagine.innerText= `immagine6;`
+    const cellanome =document.createElement('td');
+    cellanome.innerText= `nome6`;
+    const cellaquantita =document.createElement('td');
+    cellaquantita.innerText= `6`;
+    const cellaprezzo =document.createElement('td');
+    cellaprezzo.innerText= `6`;
+    nuovaRiga.appendChild(cellaImmagine);
+    nuovaRiga.appendChild(cellanome);
+    nuovaRiga.appendChild(cellaquantita);
+    nuovaRiga.appendChild(cellaprezzo);
+    tabella.appendChild(nuovaRiga);
+    contenitore.appendChild(tabella);
 };
-
+addRow();
 /* ESERCIZIO 14
        Crea una funzione che nasconda le immagini della tabella quando eseguita
      */
 
-const hideAllImages = function () {};
+
 
 /* EXTRA ESERCIZIO 15
        Crea una funzione che cambi il colore del h2 con id "changeMyColor" con un colore random ad ogni click ricevuto
@@ -197,9 +213,11 @@ const changeColorWithRandom = function () {
     const nuovoColore = document.getElementById('changeMyColor');
     
     nuovoColore.onclick = function(){
-        const coloreCasuale = Math.floor(Math.random()*16777215).toString(16);
-        nuovoColore.innerText += coloreCasuale.innerText;
-
+        const red = Math.floor(Math.random()*256);
+        const blue = Math.floor(Math.random()*256);  
+        const green = Math.floor(Math.random()*256);
+        let coloreRandom = `rgb(${red},${green},${blue})`;
+        nuovoColore.style.color = coloreRandom;
     }
 };
 changeColorWithRandom(); 
@@ -207,4 +225,19 @@ changeColorWithRandom();
        Crea una funzione che elimini le vocali da ogni elemento testuale della pagina (puoi aiutarti con i nuovi metodi degli array di ES6)
      */
 
-const deleteVowels = function () {};
+const deleteVowels = function () {
+    document.querySelectorAll('h1,h2,h3,li,a,p,th,td').forEach((element)=>{
+        element.innerText = [...element.innerText].filter((carattere) => {
+            carattere = carattere.toLowerCase();
+            return(
+                carattere !== 'a' &&
+             carattere !== 'e' &&
+              carattere !== 'o' && 
+              carattere !== 'i'&&
+               carattere !=='u'
+               );
+
+        }).join('')
+    })
+};
+deleteVowels();
