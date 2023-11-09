@@ -29,7 +29,7 @@ changePcontent();
 
 const changeUrls = function () {
 const links = document.querySelectorAll("a:not(footer a)");
-links.forEach((element) => element.innerHTML = 'https://www.google.com');
+links.forEach((element) => element.setAttribute( 'href','https://www.google.com'));
 }
 changeUrls();
 /* ESERCIZIO 5
@@ -49,6 +49,7 @@ addToTheSecond();
 const addParagraph = function () {
 const aggiungi = document.querySelector('div');
 const p = document.createElement('p');
+p.innerText = 'sono il paragrafo';
 aggiungi.appendChild(p);
 }
 addParagraph();
@@ -89,7 +90,9 @@ const revealFooterLink = function () {
     const clickFooter = document.querySelector('footer');
     clickFooter.onclick = function(){
         alert('https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Manipulating_documents');
-    }
+        //const link = document.quesrySelection('footer a');
+        //alert(link.getAttribute('href'));
+    } 
  };
 revealFooterLink();
 /* ESERCIZIO 11
@@ -98,32 +101,79 @@ revealFooterLink();
      */
 
 const generateTable = function () {
-    const tableArea = document.getElementById('tableArea');
+    
 const tabella1 =[{
+    id:1,
     immagine :'primaimg',
     nomeprodotto : 'prodotto1',
     quantità: '1',
     prezzo: '1',
 },
 {
+    id: 2,
     immagine :'secondaimg',
     nomeprodotto : 'prodotto2',
     quantità: '2',
     prezzo: '2',
-}]
-tabella1 = document.createElement('table');
-tabella1.forEach((item) => {
-const row = document.createElement('tr');
-const immagini = document.createElement ('td');
-immagini.textContent = item.immagine;
-const nomeprodotto = document.createElement ('td');
-nomeprodotto.textContent = item.nomeprodotto;
-row.appendChild(immagini);
-row.appendChild(nomeprodotto);
-tbody.appendChild(row);
-});
-}
+},
+{
+    id:3,
+    immagine :'terzaimg',
+    nomeprodotto : 'prodotto3',
+    quantità: '1',
+    prezzo: '1',
+},
+{
+    id:4,
+    immagine :'quartaimg',
+    nomeprodotto : 'prodotto4',
+    quantità: '1',
+    prezzo: '1',
+},
+{
+    id:5,
+    immagine :'quintaimg',
+    nomeprodotto : 'prodotto5',
+    quantità: '1',
+    prezzo: '1',
+},
+]
+const contenitore = document.getElementById('tableArea');
+const tabella = document.createElement('table');
 
+tabella.style.width = '50vw';
+const primaRiga = document.createElement('tr');
+const intImmagine = document.createElement('th');
+intImmagine.innerText = 'Immagine';
+const intnome = document.createElement('th');
+intnome.innerText = 'Nome Prodotto';
+const intquantita = document.createElement('th');
+intquantita.innerText = 'quantita';
+const intPrezzo = document.createElement('th');
+intPrezzo.innerText = 'Prezzo';
+primaRiga.appendChild(intImmagine);
+primaRiga.appendChild(intnome);
+primaRiga.appendChild(intquantita);
+primaRiga.appendChild(intPrezzo);
+tabella.appendChild(primaRiga);
+for(let i=0; i<tabella1.length;i++){
+    const nuovaRiga = document.createElement('tr');
+    const cellaImmagine =document.createElement('td');
+    cellaImmagine.innerText= `${tabella1[i].immagine}`
+    const cellanome =document.createElement('td');
+    cellanome.innerText= `${tabella1[i].nomeprodotto}`
+    const cellaquantita =document.createElement('td');
+    cellaquantita.innerText= `${tabella1[i].quantità}`
+    const cellaprezzo =document.createElement('td');
+    cellaprezzo.innerText= `${tabella1[i].prezzo}`
+    nuovaRiga.appendChild(cellaImmagine);
+    nuovaRiga.appendChild(cellanome);
+    nuovaRiga.appendChild(cellaquantita);
+    nuovaRiga.appendChild(cellaprezzo);
+    tabella.appendChild(nuovaRiga);
+}
+contenitore.appendChild(tabella);
+}
 generateTable();
 /* ESERCIZIO 12
         Crea una funzione che aggiunga una riga alla tabella precedentemente creata e fornisca i dati necessari come parametri
@@ -147,7 +197,7 @@ const changeColorWithRandom = function () {
     const nuovoColore = document.getElementById('changeMyColor');
     
     nuovoColore.onclick = function(){
-        const coloreCasuale =randomColor = Math.floor(Math.random()*16777215).toString(16);
+        const coloreCasuale = Math.floor(Math.random()*16777215).toString(16);
         nuovoColore.innerText += coloreCasuale.innerText;
 
     }
