@@ -56,7 +56,7 @@ const giorniTotali = function () {
 const deselezionaCelle = function () {
   const celle = document.querySelectorAll(".day");
   celle.forEach((element) => {
-    element.classList.remove("selected"); // rimuove la classe selected a tutti quelli con id day
+    element.classList.remove("selected"); // rimuove la classe selected a tutti quelli con la classe .day
   });
 };
 // quando faccio click sullo span newMeetingDay dovro leggere la data selezionata
